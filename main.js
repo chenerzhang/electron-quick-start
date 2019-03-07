@@ -1,9 +1,21 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, protocol} = require('electron');
+const path = require('path');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
+protocol.registerStandardSchemes(['miniapp']);
+app.on('ready', () => {
+  protocol.registerFileProtocol('miniapp', (request, callback) => {
+    const url = request.url;
+    console.log(url);
+    callback(path.normalize('/Users/cez/code/test/1.html'));
+  }, (error) => {
+    console.error('registerFileProtocol 1 error', error);
+  });
+});
 
 function createWindow () {
   // Create the browser window.
