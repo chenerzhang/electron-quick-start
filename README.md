@@ -20,9 +20,11 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 
 ```bash
 # Clone this repository
-git clone https://github.com/electron/electron-quick-start
+git clone https://github.com/chenerzhang/electron-quick-start.git
 # Go into the repository
 cd electron-quick-start
+# Checkout branch
+git checkout test
 # Install dependencies
 npm install
 # Run the app
