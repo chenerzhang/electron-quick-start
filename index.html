@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <style>
+      .webview {
+        width: 200px;
+        height: 200px;
+      }
+    </style>
   </head>
   <body>
     <h1>Hello World!</h1>
@@ -10,7 +16,9 @@
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
-
+    <a href="lark://chat.com?query=1&%E5%A5%BD%E7%9A%84=%7B%22a%22%3A1%7D#b=2" target="__blank">这是一个链接</a>
+    <a href="https://www.baidu.com" target="__blank">百度</a>
+    <webview class="webview" src="/Users/cez/code/test/webview1-1.html"></webview>
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')

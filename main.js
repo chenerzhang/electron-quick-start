@@ -1,5 +1,6 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
+const { triggerSendUrlToRenderProcess } = require('./main/registerScheme');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -28,6 +29,17 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  mainWindow.webContents.on('new-window', function(e, url) {
+    console.log('new-window', url);
+    e.preventDefault();
+    triggerSendUrlToRenderProcess(url);
+  });
+  mainWindow.webContents.on('will-navigate', function(e, url) {
+    console.log('will-navigate', url);
+    e.preventDefault();
+    triggerSendUrlToRenderProcess(url);
+  });
 }
 
 // This method will be called when Electron has finished
